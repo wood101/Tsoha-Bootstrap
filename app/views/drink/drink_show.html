@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{drink.nimi}}</h1>
+
+      <h3>Juomalaji:</h3>
+      <p>{{drink.juomalaji}}</p>
+
+    <!-- Tappelen myöhemmin aineosien kaivamisen kanssa -->
+      <h3>Ainesosat:<h3>
+      <p>4 cl Gin, 12 cl Tonic -vesi, 0.25 kpl Lime<p>
+          
+      <h3>Ohje:</h3>
+      <p>{{drink.ohje}}<p>
+{% endblock %}

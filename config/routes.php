@@ -1,23 +1,28 @@
 <?php
 
   $routes->get('/', function() {
+  DrinksController::index();
+  });
+  
+  $routes->post('/drink', function(){
+  DrinksController::store();
+  });
+
+  $routes->get('/drink/add', function(){
+  DrinksController::create();
+  });
+
+  $routes->get('/drink/:id', function($id) {
+  DrinksController::drink_show($id);
+  });    
+  
+  //Vanhat reitit alkaa tästä
+  $routes->get('/', function() {
     HelloWorldController::index();
   });
 
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
-  });
-  
-  $routes->get('/drink', function() {
-  HelloWorldController::drink_list();
-  });
-  
-  $routes->get('/drink/1', function() {
-  HelloWorldController::drink_show();
-  });
-  
-  $routes->get('/drink/2', function() {
-  HelloWorldController::drink_add();
   });
   
   $routes->get('/authorize', function() {
