@@ -15,10 +15,9 @@
       <tr>
         <td><a href="{{base_path}}/drink/{{drink.id}}">{{drink.nimi}}</a></td>
         <td>{{drink.juomalaji}}</td>
-        <!-- Korjaan kun admin luokka on luotu ja käyttäjät toimii -->
-        {% if admin %}
-        <td><a class="btn btn-default btn-sm" href="{{base_path}}/drink/{{drink.id}}/delete">Poista</a></td>
-        {% endif %}
+        <td><form method="post" action="{{base_path}}/drink/{{drink.id}}/destroy" style="display: inline-block;">
+            <button type="submit" class="btn btn-danger">Poista</button>
+            </form></td>
       </tr>
      {% endfor %}
     </tbody>

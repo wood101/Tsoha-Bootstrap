@@ -19,9 +19,16 @@
       // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
       $errors = array();
 
-      foreach($this->validators as $validator){
+      //foreach($this->validators as $validator){
+      //
         // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
-      }
+      $validate_nimi = 'validate_nimi';
+      $validate_ohje = 'validate_ohje';
+      $validate_juomalaji = 'validate_juomalaji';
+      $errors = array_merge($errors, $this->{$validate_nimi}());
+      $errors = array_merge($errors, $this->{$validate_ohje}());
+      $errors = array_merge($errors, $this->{$validate_juomalaji}());
+      //}
 
       return $errors;
     }

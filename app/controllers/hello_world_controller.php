@@ -2,12 +2,15 @@
   class HelloWorldController extends BaseController{
  
   public static function sandbox(){
-  $sokeri = Drink::find(1);
-    $ingredient = Drink::all();
-    // Kint-luokan dump-metodi tulostaa muuttujan arvon
-    Kint::dump($ingredient);
-    Kint::dump($sokeri);
-  }      
+  $drinkki = new Drink(array(
+    'nimi' => 'h',
+    'ohje' => 'jotain',
+    'juomalaji' => ''
+  ));
+  $errors = $drinkki->errors();
+
+  Kint::dump($errors);
+} 
   
   public static function login(){
     View::make('suunnitelmat/login.html');

@@ -41,10 +41,16 @@
         <!-- Navigaation linkit -->
         <li><a href="{{base_path}}/drink/add">Lisää drinkki</a></li>
       </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Kirjaudu sisään</a></li>
+  {% if user_logged_in %}
+    <ul class="nav navbar-nav navbar-right">
+        <li>Kirjautuneena: {{user_logged_in.kayttajatunnus}}</li>
       </ul>
+  {% else %}
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{base_path}}/login">Kirjaudu sisään</a></li>
+      </ul>  
+  {% endif %}
+
     </div>
   </div>
 </nav>

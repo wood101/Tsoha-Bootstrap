@@ -13,14 +13,32 @@
   });
 
   $routes->get('/drink/:id', function($id) {
-  DrinksController::drink_show($id);
+  DrinksController::find($id);
   });    
   
-  //Vanhat reitit alkaa tästä
-  $routes->get('/', function() {
-    HelloWorldController::index();
+  $routes->post('/drink/:id/destroy', function($id){
+  DrinksController::destroy($id);
   });
-
+  
+  $routes->get('/drink/:id/edit', function($id){
+  DrinksController::edit($id);
+  });
+  
+  $routes->post('/drink/:id/edit', function($id){
+  DrinksController::update($id);
+  });
+  
+  $routes->get('/login', function(){
+  // Kirjautumislomakkeen esittäminen
+  UserController::login();
+  });
+  
+  $routes->post('/login', function(){
+  // Kirjautumisen käsittely
+  UserController::handle_login();
+  });
+  
+  //Vanhat reitit alkaa tästä
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
   });
@@ -31,10 +49,6 @@
   
   $routes->get('/user', function() {
   HelloWorldController::user();
-  });
-  
-  $routes->get('/login', function() {
-  HelloWorldController::login();
   });
   
     $routes->get('/proposals', function() {
