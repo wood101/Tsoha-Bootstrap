@@ -2,22 +2,29 @@
 
 class DrinksController extends BaseController {
     
-    public static function index(){
-        $drinks = Drink::all();
-        
-        View::make('drink/drink_list.html', array('drinks' => $drinks));
+  public static function index(){
+    self::check_logged_in();
+    $drinks = Drink::all();
+    View::make('drink/drink_list.html', array('drinks' => $drinks));
     }
     
-    public static function find($id){
-        $drink = Drink::find($id);
-        View::make('drink/drink_show.html', array('drink' => $drink));
+  public static function find($id){
+    self::check_logged_in();
+    $drink = Drink::find($id);
+    View::make('drink/drink_show.html', array('drink' => $drink));
     }
     
-    public static function create(){
+  public static function create(){
+    self::check_logged_in();
     View::make('drink/drink_add.html');
     }
     
-    public static function store(){
+  public static function edit($id){
+    self::check_logged_in();
+    $drink = Drink::find($id);
+    View::make('drink/drink_edit.html', array('drink' => $drink));
+    }    
+  public static function store(){
     $params = $_POST;
     $attributes = array(
       'nimi' => $params['nimi'],
@@ -37,10 +44,7 @@ class DrinksController extends BaseController {
     }
    }
     
-     public static function edit($id){
-    $drink = Drink::find($id);
-    View::make('drink/drink_edit.html', array('drink' => $drink));
-  }
+
 
   public static function update($id){
     $params = $_POST;

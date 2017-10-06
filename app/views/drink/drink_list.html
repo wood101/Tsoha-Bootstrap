@@ -7,6 +7,7 @@
       <tr>
         <th>Nimi</th>
         <th>Juomalaji</th>
+        <!--<th>Tekijä</th> -->
       </tr>
     </thead>
 
@@ -15,6 +16,7 @@
       <tr>
         <td><a href="{{base_path}}/drink/{{drink.id}}">{{drink.nimi}}</a></td>
         <td>{{drink.juomalaji}}</td>
+        <!--<td>{{drink.tekija}}</td>-->
         <td><form method="post" action="{{base_path}}/drink/{{drink.id}}/destroy" style="display: inline-block;">
             <button type="submit" class="btn btn-danger">Poista</button>
             </form></td>

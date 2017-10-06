@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Ehdotukset</h1>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Nimi</th>
+        <th>Juomalaji</th>
+        <!--<th>Tekijä</th>-->
+      </tr>
+    </thead>
+
+    <tbody>
+        {% for proposal in proposals %}
+      <tr>
+        <td><a href="{{base_path}}/proposal/{{proposal.id}}">{{proposal.nimi}}</a></td>
+        <td>{{proposal.juomalaji}}</td>
+        <!--<td>{{proposal.tekija}}</td>-->
+        <td><form method="post" action="{{base_path}}/proposal/{{proposal.id}}/accept" style="display: inline-block;">
+            <button type="submit" class="btn btn-danger">Hyväksy</button>
+        </form></td>
+        <td><form method="post" action="{{base_path}}/proposal/{{proposal.id}}/destroy" style="display: inline-block;">
+            <button type="submit" class="btn btn-danger">Poista</button>
+        </form></td>
+        
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

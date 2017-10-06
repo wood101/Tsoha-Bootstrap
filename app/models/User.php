@@ -1,7 +1,7 @@
 <?php
 
 class User extends BaseModel {
-    public $id, $kayttajatunnus, $salasana, $sahkoposti, $valtuutus;
+    public $id, $kayttajatunnus, $salasana, $sahkoposti, $admin;
     public function __construct($attributes){
     parent::__construct($attributes);
     $this->validators = array('validate_tunnus', 'validate_salasana', 'validate_sahkoposti');
@@ -19,7 +19,7 @@ public static function all(){
         'kayttajatunnus' => $row['kayttajatunnus'],
         'salasana' => $row['salasana'],
         'sahkoposti' => $row['sahkoposti'],
-        'valtuutus' => $row['valtuutus']
+        'admin' => $row['admin']
       ));
     }
 
@@ -37,7 +37,7 @@ public static function all(){
         'kayttajatunnus' => $row['kayttajatunnus'],
         'salasana' => $row['salasana'],
         'sahkoposti' => $row['sahkoposti'],
-        'valtuutus' => $row['valtuutus']
+        'admin' => $row['admin']
       ));
 
       return $user;
@@ -56,7 +56,7 @@ public static function all(){
         'kayttajatunnus' => $row['kayttajatunnus'],
         'salasana' => $row['salasana'],
         'sahkoposti' => $row['sahkoposti'],
-        'valtuutus' => $row['valtuutus']
+        'admin' => $row['admin']
       ));
            
       return $user;
@@ -70,26 +70,6 @@ public static function all(){
     $query->execute(array('kayttajatunnus' => $this->kayttajatunnus, 'salasana' => $this->salasana, 'sahkoposti' => $this->sahkoposti));
     $row = $query->fetch();
     $this->id = $row['id'];
-  }
-  
-  public function edit(){
-    $query = DB::connection()->prepare('UPDATE Kayttaja SET kayttajatunnus = :kayttajatunnus, salasana = :salasana, sahkoposti = :sahkoposti WHERE id = :id');
-    $query->execute(array('id' => $this->id, 'kayttajatunnus' => $this->kayttajatunnus, 'salasana' => $this->salasana, 'sahkoposti' => $this->sahkoposti));
-    $row = $query->fetch();
-  }  
-  
-  
-  
-  public function destroy(){
-    $query = DB::connection()->prepare('DELETE FROM Kayttaja WHERE id = :id');
-    $query->execute(array('id' => $id));
-    $row = $query->fetch();
-  }
-  
-  public function authorize(){
-    $query = DB::connection()->prepare('UPDATE Kayttaja SET valtuutus = 1 WHERE id = :id');
-    $query->execute(array('id' => $this->id));
-    $row = $query->fetch();
   }
   
   public function validate_tunnus(){

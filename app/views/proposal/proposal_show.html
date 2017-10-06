@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{proposal.nimi}}</h1>
+
+      <h3>Juomalaji:</h3>
+      <p>{{proposal.juomalaji}}</p>
+
+    <!-- Tappelen myöhemmin aineosien kaivamisen kanssa -->
+      <h3>Ainesosat:<h3>
+      <p>4 cl Gin, 12 cl Tonic -vesi, 0.25 kpl Lime<p>
+          
+      <h3>Ohje:</h3>
+      <p>{{proposal.ohje}}<p>
+          
+      <!--<h2><a href="{{base_path}}/proposal/{{proposal.id}}/edit">Muokkaa</a></h2>-->
+{% endblock %}

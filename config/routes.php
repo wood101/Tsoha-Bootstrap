@@ -1,4 +1,5 @@
 <?php
+  //Drinkin reitit
 
   $routes->get('/', function() {
   DrinksController::index();
@@ -28,6 +29,38 @@
   DrinksController::update($id);
   });
   
+  //Ehdotuksien reitit
+  
+  $routes->get('/proposals', function() {
+  ProposalController::list_all();
+  });
+  
+  $routes->post('/proposal', function(){
+  ProposalController::store();
+  });
+
+  $routes->get('/proposal/add', function(){
+  ProposalController::create();
+  });
+
+  $routes->get('/proposal/:id', function($id) {
+  ProposalController::find($id);
+  });    
+  
+  $routes->post('/proposal/:id/destroy', function($id){
+  ProposalController::destroy($id);
+  });
+  
+  $routes->get('/proposal/:id/edit', function($id){
+  ProposalController::edit($id);
+  });
+  
+  $routes->post('/proposal/:id/edit', function($id){
+  ProposalController::update($id);
+  });
+  
+  //Kirjautumisen reitit
+  
   $routes->get('/login', function(){
   // Kirjautumislomakkeen esittäminen
   UserController::login();
@@ -38,19 +71,7 @@
   UserController::handle_login();
   });
   
-  //Vanhat reitit alkaa tästä
-  $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
-  });
-  
-  $routes->get('/authorize', function() {
-  HelloWorldController::authorize();
-  });
-  
-  $routes->get('/user', function() {
-  HelloWorldController::user();
-  });
-  
-    $routes->get('/proposals', function() {
-  HelloWorldController::proposals();
+  $routes->post('/logout', function(){
+  // Uloskirjautuminen
+  UserController::logout();
   });

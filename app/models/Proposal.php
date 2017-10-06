@@ -1,7 +1,7 @@
 <?php
 
 
-class Drink extends BaseModel {
+class Proposal extends BaseModel {
     public $id, $tekija, $nimi, $ohje, $juomalaji;
     public function __construct($attributes){
     parent::__construct($attributes);
@@ -9,13 +9,13 @@ class Drink extends BaseModel {
     }
 
 public static function all(){
-    $query = DB::connection()->prepare('SELECT * FROM Drinkkiresepti');
+    $query = DB::connection()->prepare('SELECT * FROM Reseptiehdotus');
     $query->execute();
     $rows = $query->fetchAll();
-    $drink = array();
+    $proposal = array();
 
     foreach($rows as $row){
-      $drink[] = new Drink(array(
+      $proposal[] = new Proposal(array(
         'id' => $row['id'],
         'tekija' => $row['tekija'],
         'nimi' => $row['nimi'],
@@ -24,16 +24,16 @@ public static function all(){
       ));
     }
 
-    return $drink;
+    return $proposal;
   }
   
   public static function find($id){
-    $query = DB::connection()->prepare('SELECT * FROM Drinkkiresepti WHERE id = :id LIMIT 1');
+    $query = DB::connection()->prepare('SELECT * FROM Reseptiehdotus WHERE id = :id LIMIT 1');
     $query->execute(array('id' => $id));
     $row = $query->fetch();
 
     if($row){
-      $drink = new Drink(array(
+      $proposal = new Proposal(array(
         'id' => $row['id'],
         'tekija' => $row['tekija'],
         'nimi' => $row['nimi'],
@@ -41,14 +41,14 @@ public static function all(){
         'juomalaji' => $row['juomalaji']
       ));
 
-      return $drink;
+      return $proposal;
     }
 
     return null;
   }
   
   public function save(){
-    $query = DB::connection()->prepare('INSERT INTO Drinkkiresepti (nimi, ohje, juomalaji) VALUES (:nimi, :ohje, :juomalaji) RETURNING id');
+    $query = DB::connection()->prepare('INSERT INTO Reseptiehdotus (nimi, ohje, juomalaji) VALUES (:nimi, :ohje, :juomalaji) RETURNING id');
     
     $query->execute(array('nimi' => $this->nimi, 'ohje' => $this->ohje, 'juomalaji' => $this->juomalaji));
     $row = $query->fetch();
@@ -56,13 +56,13 @@ public static function all(){
   }
   
   public function edit($id){
-    $query = DB::connection()->prepare('UPDATE Drinkkiresepti SET nimi = :nimi, ohje = :ohje, juomalaji = :juomalaji WHERE id = :id');
+    $query = DB::connection()->prepare('UPDATE Reseptiehdotus SET nimi = :nimi, ohje = :ohje, juomalaji = :juomalaji WHERE id = :id');
     $query->execute(array('id' => $id, 'nimi' => $this->nimi, 'ohje' => $this->ohje, 'juomalaji' => $this->juomalaji));
     $row = $query->fetch();
   }  
   
   public static function destroy($id){
-    $query = DB::connection()->prepare('DELETE FROM Drinkkiresepti WHERE id = :id');
+    $query = DB::connection()->prepare('DELETE FROM Reseptiehdotus WHERE id = :id');
     $query->execute(array('id' => $id));
     $row = $query->fetch();
   }
