@@ -22,6 +22,7 @@ Ylläpitäjä voi lisätä uusia drinkkejä suoraan tai hyväksyä käyttäjien 
 Peruskäyttäjä
 * Tunnus: Kalle
 * Salasana: Kalle123
+
 Ylläpitäjä
 * Tunnus: admin
 * Salasana: admin
