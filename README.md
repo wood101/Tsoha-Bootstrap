@@ -7,19 +7,24 @@ Yleisiä linkkejä:
 
 ## Työn aihe
 
-[Linkki valmiiseen aiheeseen.](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Drinkkiarkisto.html) 
-Aihe on muuten sama, mutta käyttäjien tietoja ei voi muokata, käyttäjiä ei voi poistaa eikä käyttäjille voi antaa lisäysoikeuksia.
+Aiheena on drinkkiarkisto, johon käyttäjät voivat ehdottaa uusia drinkkejä. Käyttäjä näkee ja voi muokata tai poistaa omia ehdotuksiaan ennen kuin ne on hyväksytty.
+Ylläpitäjä voi lisätä uusia drinkkejä suoraan tai hyväksyä käyttäjien ehdotuksia. Ylläpitäjä voi myös muokata tai poistaa drinkkejä sekä drinkkiehdotuksia.
 
 ### Ohjelman näkymät
 * [Kirjautuminen](http://madjanne.users.cs.helsinki.fi/tietokanta/login)
-* [Drinkkien listaus](http://madjanne.users.cs.helsinki.fi/tietokanta/drink)
+* [Rekisteröityminen](http://madjanne.users.cs.helsinki.fi/tietokanta/register)
+* [Drinkkien listaus](http://madjanne.users.cs.helsinki.fi/tietokanta/)
 * [Drinkin lisäys](http://madjanne.users.cs.helsinki.fi/tietokanta/drink/add)
-* [Drinkin ehdotuslomake](http://madjanne.users.cs.helsinki.fi/tietokanta/proposals)
+* [Drinkkiehdotuksien listaus](http://madjanne.users.cs.helsinki.fi/tietokanta/proposals)
+* [Drinkin ehdottaminen](http://madjanne.users.cs.helsinki.fi/tietokanta/proposal/add) 
 
-#### Testikäyttäjä
-    
+#### Testikäyttäjät
+Peruskäyttäjä
 * Tunnus: Kalle
 * Salasana: Kalle123
+Ylläpitäjä
+* Tunnus: admin
+* Salasana: admin
 
 
 

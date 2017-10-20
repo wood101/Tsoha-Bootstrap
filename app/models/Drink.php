@@ -8,7 +8,7 @@ class Drink extends BaseModel {
     $this->validators = array('validate_nimi', 'validate_ohje', 'validate_juomalaji');
     }
 
-public static function all(){
+  public static function all(){
     $query = DB::connection()->prepare('SELECT * FROM Drinkkiresepti');
     $query->execute();
     $rows = $query->fetchAll();
@@ -48,9 +48,9 @@ public static function all(){
   }
   
   public function save(){
-    $query = DB::connection()->prepare('INSERT INTO Drinkkiresepti (nimi, ohje, juomalaji) VALUES (:nimi, :ohje, :juomalaji) RETURNING id');
+    $query = DB::connection()->prepare('INSERT INTO Drinkkiresepti (tekija, nimi, ohje, juomalaji) VALUES (:tekija, :nimi, :ohje, :juomalaji) RETURNING id');
     
-    $query->execute(array('nimi' => $this->nimi, 'ohje' => $this->ohje, 'juomalaji' => $this->juomalaji));
+    $query->execute(array('tekija' => $this->tekija, 'nimi' => $this->nimi, 'ohje' => $this->ohje, 'juomalaji' => $this->juomalaji));
     $row = $query->fetch();
     $this->id = $row['id'];
   }

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Muokkaa drinkkiä</h1>
+  <h1>Muokkaa ehdotusta</h1>
 
   {% if errors %}
     <div class="alert alert-danger">
@@ -12,16 +12,16 @@
     </div>
   {% endif %}
   
-   <form method="post" action="{{base_path}}/drink/{{drink.id}}/edit">
+   <form method="post" action="{{base_path}}/proposal/{{proposal.id}}/edit">
        
     <div class="form-group">
       <label>Nimi</label>
-      <input class="form-control" name="nimi" type="text" value="{{drink.nimi}}">
+      <input class="form-control" name="nimi" type="text" value="{{proposal.nimi}}">
     </div>
        
     <div class="form-group">
       <label>Juomalaji</label>
-      <input class="form-control" name="juomalaji" type="text" value="{{drink.juomalaji}}">
+      <input class="form-control" name="juomalaji" type="text" value="{{proposal.juomalaji}}">
     </div>
        
     <div class="form-group">
@@ -34,7 +34,7 @@
        
     <div class="form-group">
       <label>Ohje</label>
-      <textarea class="form-control" name="ohje">{{drink.ohje}}</textarea>
+      <textarea class="form-control" name="ohje">{{proposal.ohje}}</textarea>
     </div>
        
     <div class="form-group">

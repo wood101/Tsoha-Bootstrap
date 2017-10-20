@@ -4,7 +4,7 @@ class User extends BaseModel {
     public $id, $kayttajatunnus, $salasana, $sahkoposti, $admin;
     public function __construct($attributes){
     parent::__construct($attributes);
-    $this->validators = array('validate_tunnus', 'validate_salasana', 'validate_sahkoposti');
+    $this->validators = array('validate_kayttajatunnus', 'validate_salasana', 'validate_sahkoposti');
     }
 
 public static function all(){
@@ -72,7 +72,7 @@ public static function all(){
     $this->id = $row['id'];
   }
   
-  public function validate_tunnus(){
+  public function validate_kayttajatunnus(){
   $errors = array();
   if($this->kayttajatunnus == '' || $this->kayttajatunnus == null){
     $errors[] = 'Tunnus ei saa olla tyhjä!';

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Lisää drinkki</h1>
+  <h1>Ehdota drinkkiä</h1>
 
   {% if errors %}
     <div class="alert alert-danger">
@@ -12,7 +12,7 @@
     </div>
   {% endif %}
   
-   <form method="post" action="{{base_path}}/drink">
+   <form method="post" action="{{base_path}}/proposal">
        
     <div class="form-group">
       <label>Nimi</label>
@@ -36,10 +36,10 @@
       <textarea class="form-control" name="ohje"></textarea>
     </div>
     
-       <input type="hidden" name="tekija" value="{{user_logged_in.id}}">
-     
+    <input type="hidden" name="tekija" value="{{user_logged_in.id}}">   
+       
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Lisää</button>
+      <button type="submit" class="btn btn-primary">Lisää ehdotus</button>
     </div>
   </form>
 {% endblock %}

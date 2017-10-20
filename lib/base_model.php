@@ -32,5 +32,23 @@
 
       return $errors;
     }
+    
+        public function register_errors(){
+      // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
+      $errors = array();
+
+      //foreach($this->validators as $validator){
+      //
+        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+      $validate_kayttajatunnus = 'validate_kayttajatunnus';
+      $validate_salasana = 'validate_salasana';
+      $validate_sahkoposti = 'validate_sahkoposti';
+      $errors = array_merge($errors, $this->{$validate_kayttajatunnus}());
+      $errors = array_merge($errors, $this->{$validate_salasana}());
+      $errors = array_merge($errors, $this->{$validate_sahkoposti}());
+      //}
+
+      return $errors;
+    }
 
   }

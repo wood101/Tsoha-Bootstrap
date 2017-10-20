@@ -8,8 +8,7 @@ CREATE TABLE Kayttaja(
 
 CREATE TABLE Ainesosa(
   id SERIAL PRIMARY KEY,
-  nimi varchar(50) NOT NULL,
-  maara varchar(50) NOT NULL
+  nimi varchar(50) NOT NULL
 );
 
 CREATE TABLE Drinkkiresepti(
@@ -30,7 +29,7 @@ CREATE TABLE Reseptiehdotus(
 );
 
 CREATE TABLE Drinkinainesosa(
-  atunnus INTEGER REFERENCES Kayttaja(id),
+  atunnus INTEGER REFERENCES Ainesosa(id),
   etunnus INTEGER REFERENCES Reseptiehdotus(id),
   dtunnus INTEGER REFERENCES Drinkkiresepti(id)
 );

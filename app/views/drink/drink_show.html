@@ -2,15 +2,27 @@
 {% block content %}
   <h1>{{drink.nimi}}</h1>
 
+  {% if message %}
+    <div class="alert alert-success">
+      <ul>
+          <li>{{message}}</li>
+      </ul>
+    </div>
+  {% endif %}   
+  
       <h3>Juomalaji:</h3>
       <p>{{drink.juomalaji}}</p>
-
-    <!-- Tappelen myöhemmin aineosien kaivamisen kanssa -->
+      
       <h3>Ainesosat:<h3>
-      <p>4 cl Gin, 12 cl Tonic -vesi, 0.25 kpl Lime<p>
-          
+      <ul>
+  {% for ingredient in ingredients %}
+       <li>{{ingredient.nimi}}</li>
+  {% endfor %}
+      </ul>
       <h3>Ohje:</h3>
       <p>{{drink.ohje}}<p>
-          
-      <h2><a href="{{base_path}}/drink/{{drink.id}}/edit">Muokkaa</a></h2>
+{% if user_logged_in.admin == 1 %}
+      <br>
+      <a href="{{base_path}}/drink/{{drink.id}}/edit" class="btn btn-info" role="button">Muokkaa</a>
+{% endif %}
 {% endblock %}

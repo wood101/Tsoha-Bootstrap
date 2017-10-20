@@ -48,9 +48,9 @@ public static function all(){
   }
   
   public function save(){
-    $query = DB::connection()->prepare('INSERT INTO Reseptiehdotus (nimi, ohje, juomalaji) VALUES (:nimi, :ohje, :juomalaji) RETURNING id');
+    $query = DB::connection()->prepare('INSERT INTO Reseptiehdotus (tekija, nimi, ohje, juomalaji) VALUES (:tekija, :nimi, :ohje, :juomalaji) RETURNING id');
     
-    $query->execute(array('nimi' => $this->nimi, 'ohje' => $this->ohje, 'juomalaji' => $this->juomalaji));
+    $query->execute(array('tekija' => $this->tekija, 'nimi' => $this->nimi, 'ohje' => $this->ohje, 'juomalaji' => $this->juomalaji));
     $row = $query->fetch();
     $this->id = $row['id'];
   }

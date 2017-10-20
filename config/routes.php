@@ -59,6 +59,10 @@
   ProposalController::update($id);
   });
   
+  $routes->post('/proposal/:id/accept', function($id) {
+  ProposalController::accept($id);
+  });    
+  
   //Kirjautumisen reitit
   
   $routes->get('/login', function(){
@@ -75,3 +79,15 @@
   // Uloskirjautuminen
   UserController::logout();
   });
+  
+  $routes->get('/register', function(){
+  // Rekisteröitymislomakkeen esittäminen
+  UserController::register();
+  });
+  
+  $routes->post('/register', function(){
+  // Rekisteröitymislomakkeen esittäminen
+  UserController::new_user();
+  });
+  
+  
