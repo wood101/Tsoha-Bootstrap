@@ -37,11 +37,18 @@ class DrinksController extends BaseController {
         
       $drink = new Drink($attributes);
       $errors = $drink->errors();
-
-  if(count($errors) == 0){
+      
+      $ingredients = $params['ainesosa'];
+      foreach($ingredients as $key=>$ingredient){
+      if($ingredient == '' | $ingredient == null){
+       unset($ingredients[$key]);
+      } 
+      }
+      
+  if(count($errors) == 0 && count($ingredients) >= 2){
     $drink->save();
     
-    foreach($params['ainesosa'] as $nimi){
+    foreach($ingredients as $nimi){
     if ($nimi != null | $nimi !='') {
     $ingredientAttributes = array(
         'nimi' => ucfirst($nimi)
@@ -60,6 +67,9 @@ class DrinksController extends BaseController {
     
     Redirect::to('/drink/' . $drink->id, array('message' => 'Drinkki on lisätty arkistoon!'));
     }else{
+    if(count($ingredients) < 2) {
+        array_push($errors, 'Ainesosia pitää olla vähintään kaksi');
+    }
     View::make('drink/drink_add.html', array('errors' => $errors, 'attributes' => $attributes));
     }
    }

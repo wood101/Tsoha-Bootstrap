@@ -1,6 +1,6 @@
 CREATE TABLE Kayttaja(
   id SERIAL PRIMARY KEY,
-  kayttajatunnus varchar(50) NOT NULL,
+  kayttajatunnus varchar(50) NOT NULL UNIQUE,
   salasana varchar(50) NOT NULL,
   sahkoposti varchar(50) NOT NULL,
   admin bit DEFAULT '0'::bit NOT NULL
@@ -24,8 +24,7 @@ CREATE TABLE Reseptiehdotus(
   tekija INTEGER REFERENCES Kayttaja(id),
   nimi varchar(50) NOT NULL,
   ohje varchar(500) NOT NULL,
-  juomalaji varchar(50) NOT NULL,
-  hyvaksytty bit DEFAULT '0'::bit NOT NULL
+  juomalaji varchar(50) NOT NULL
 );
 
 CREATE TABLE Drinkinainesosa(

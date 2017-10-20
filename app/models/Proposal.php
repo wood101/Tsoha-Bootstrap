@@ -70,10 +70,10 @@ public static function all(){
   public function validate_nimi(){
   $errors = array();
   if($this->nimi == '' || $this->nimi == null){
-    $errors[] = 'Nimi ei saa olla tyhjä!';
+    $errors[] = 'Nimi ei saa olla tyhjä';
   }
   if(strlen($this->nimi) < 2){
-    $errors[] = 'Nimen pituuden tulee olla vähintään kaksi merkkiä!';
+    $errors[] = 'Nimen pituuden tulee olla vähintään kaksi merkkiä';
   }
 
   return $errors;
@@ -82,7 +82,7 @@ public static function all(){
   public function validate_ohje(){
   $errors = array();
   if($this->ohje == '' || $this->ohje == null){
-    $errors[] = 'Kirjoita jotain ohjeeseen!';
+    $errors[] = 'Kirjoita jotain ohjeeseen';
   }
 
   return $errors;
@@ -91,7 +91,7 @@ public static function all(){
   public function validate_juomalaji(){
   $errors = array();
   if($this->juomalaji == '' || $this->juomalaji == null){
-    $errors[] = 'Juomalaji ei saa olla tyhjä!';
+    $errors[] = 'Juomalaji ei saa olla tyhjä';
   }
 
   return $errors;

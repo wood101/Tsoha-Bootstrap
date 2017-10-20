@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>{{drink.nimi}}</h1>
-
   {% if message %}
     <div class="alert alert-success">
       <ul>
@@ -9,7 +7,7 @@
       </ul>
     </div>
   {% endif %}   
-  
+  <h1>{{drink.nimi}}</h1>  
       <h3>Juomalaji:</h3>
       <p>{{drink.juomalaji}}</p>
       

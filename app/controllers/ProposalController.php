@@ -38,7 +38,7 @@ class ProposalController extends BaseController {
       $proposal = new Proposal($attributes);
       $errors = $proposal->errors();
 
-  if(count($errors) == 0){
+  if(count($errors) == 0 && count($params['ainesosa']) > 1){
     $proposal->save();
     
     foreach($params['ainesosa'] as $nimi){
